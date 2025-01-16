@@ -11,5 +11,5 @@ public class HomeController {
     @GetMapping("/KatsuGuide")
     public String home(Model model) {
         return "Home"; //
-    } rrr
+    }
 }
