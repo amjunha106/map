@@ -1,0 +1,46 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '2.7.5'  // Spring Boot 버전 2.7.5로 설정
+    id 'io.spring.dependency-management' version '1.1.7'
+}
+
+springBoot {
+    mainClass.set('com.web.demo.Map1Application')  // 실행할 메인 클래스 설정
+}
+
+group = 'com.web'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+repositories {
+    mavenCentral()
+    maven { url 'https://repo.spring.io/milestone' }  // Spring Milestone 저장소 추가
+}
+
+dependencies {
+    // Spring Boot 웹 스타터
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    // Thymeleaf 의존성 추가
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    // Spring Data JPA 의존성
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    // MySQL 커넥터
+    implementation 'mysql:mysql-connector-java:8.0.33'
+    // 개발 시 유용한 Spring Boot DevTools 의존성
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    // 테스트 의존성
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
