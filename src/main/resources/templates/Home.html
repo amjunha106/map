@@ -323,8 +323,14 @@
 
 <!-- 콘텐츠 영역 -->
 <div class="content ranking">
-  <div class="ranking-content">
-    랭킹 콘텐츠가 여기에 표시됩니다.
+  <div th:each="item : ${rankings}">
+    <p>
+      <span th:text="${item.ranking}"></span>.
+      <span th:text="${item.restaurantName}"></span>
+      <span th:text="${item.location}"></span>
+      <span th:text="${item.rating}"></span>
+      <span th:text="${item.review}"></span>
+    </p>
   </div>
 </div>
 
