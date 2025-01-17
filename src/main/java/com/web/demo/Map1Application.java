@@ -2,6 +2,7 @@ package com.web.demo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @SpringBootApplication  // 스프링 부트 애플리케이션 설정
 public class Map1Application {
