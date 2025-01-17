@@ -6,5 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface RankingsRepository extends JpaRepository<Rankings, Long> {
-    List<Rankings> findAllByOrderByRankingDesc();
+    List<Rankings> findAllByOrderByRankingAsc();
 }

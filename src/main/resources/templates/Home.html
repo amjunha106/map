@@ -178,20 +178,17 @@
     }
 
     /* 랭킹 콘텐츠 스타일 */
-    .ranking-content {
-      border: 3px solid #b0b0b0; /* 회색 테두리 설정 */
-      border-radius: 15px; /* 테두리 둥글게 설정 */
-      width: 70%; /* 콘텐츠 너비 70%로 설정 */
-      height: 300px; /* 높이 설정 */
-      background-color: #333; /* 배경색 어두운 색으로 설정 */
-      padding: 20px; /* 내부 여백 추가 */
-      box-sizing: border-box; /* 패딩을 포함한 크기 설정 */
-      margin: 0 auto; /* 가로 중앙 정렬 */
-      position: absolute; /* 절대 위치 설정 */
-      top: 25%; /* 화면 세로 중간에 위치 */
-      left: 50%; /* 가로 중앙에 위치 */
-      transform: translate(-50%, -50%); /* 정확한 중앙 정렬 */
-    }
+.ranking-content {
+  border: 3px solid #b0b0b0; /* 회색 테두리 설정 */
+  border-radius: 15px; /* 테두리 둥글게 설정 */
+  width: 70%; /* 콘텐츠 너비 70%로 설정 */
+  height: 300px; /* 높이 설정 */
+  background-color: #333; /* 배경색 어두운 색으로 설정 */
+  padding: 20px; /* 내부 여백 추가 */
+  box-sizing: border-box; /* 패딩을 포함한 크기 설정 */
+  margin: 20px auto; /* 상하 간격을 추가하고 가로 중앙 정렬 */
+  position: relative; /* 상대 위치 설정 */
+}
 
     /* 지역 콘텐츠 항목 스타일 */
     .region-content {
@@ -260,7 +257,8 @@
 
   <!-- 사이드바 메뉴 추가 -->
   <div class="menu">
-    <a href="#" class="menu-item" onclick="showContent('ranking')">랭킹</a>
+    <!-- 사이드바 메뉴에서 랭킹 클릭 시 showContent('ranking') 호출 -->
+    <a href="javascript:void(0);" class="menu-item" onclick="showContent('ranking')">랭킹</a>
     <a href="#" class="menu-item" onclick="showContent('region')">지역</a>
     <a href="#" class="menu-item" onclick="showContent('philosophy')">철학</a>
     <a href="#" class="menu-item" onclick="showContent('board')">게시판</a>
@@ -322,15 +320,10 @@
 
 
 <!-- 콘텐츠 영역 -->
-<div class="content ranking">
-  <div th:each="item : ${rankings}">
-    <p>
-      <span th:text="${item.ranking}"></span>.
-      <span th:text="${item.restaurantName}"></span>
-      <span th:text="${item.location}"></span>
-      <span th:text="${item.rating}"></span>
-      <span th:text="${item.review}"></span>
-    </p>
+<!-- 콘텐츠 영역 (랭킹 데이터 출력) -->
+<div class="content ranking" style="display: none; overflow-y: auto; max-height: 80vh;">
+  <div id="ranking-container" style="width: 100%; height: 80.5vh;">
+    <!-- 랭킹 데이터를 여기에 동적으로 삽입 -->
   </div>
 </div>
 
@@ -361,24 +354,6 @@
 </div>
 
 <script>
-  let currentSlide = 0;  // 현재 슬라이드를 추적하는 변수
-
-  // 슬라이드를 전환하는 함수
-  function moveSlide() {
-    const slides = document.querySelectorAll('.slide');  // 모든 슬라이드를 선택
-    const totalSlides = slides.length;  // 전체 슬라이드의 개수
-
-    // currentSlide 값을 증가시켜 슬라이드를 하나씩 넘기며, 마지막 슬라이드 후 처음으로 돌아가도록 설정
-    currentSlide = (currentSlide + 1) % totalSlides;
-
-    const slider = document.getElementById('slider');  // 슬라이드를 감싸는 div 선택
-    // 슬라이드를 좌우로 이동시키는 transform 속성을 이용하여 슬라이드 전환
-    slider.style.transform = `translateX(-${currentSlide * 10}%)`;  // 한 슬라이드의 너비만큼 이동 (100%씩)
-  }
-
-  // 자동 슬라이드 전환 (4초마다 moveSlide 함수 실행)
-  setInterval(moveSlide, 6000);  // 6초마다 moveSlide 함수를 호출하여 자동으로 슬라이드 전환
-
   // 콘텐츠를 변경하는 함수 (메뉴 클릭 시 실행)
   function showContent(contentName) {
     // 이미지 슬라이드와 텍스트를 숨김 처리
@@ -393,6 +368,46 @@
     // 클릭한 콘텐츠만 활성화하여 보여주기
     const activeContent = document.querySelector(`.${contentName}`); // 클릭된 콘텐츠 선택
     activeContent.style.display = 'flex';  // 해당 콘텐츠에 display: flex를 설정하여 표시
+
+    // 랭킹 데이터를 서버에서 비동기적으로 가져오기
+    if (contentName === 'ranking') {
+      fetchRankings();  // 랭킹 데이터를 가져오는 함수 호출
+    }
+  }
+
+  // 랭킹 데이터를 서버에서 비동기적으로 가져오는 함수
+  function fetchRankings() {
+    fetch('/rank')  // 서버의 "/rank" URL로 GET 요청
+      .then(response => response.json())  // JSON 형식으로 응답 받기
+      .then(data => {
+        const rankingContainer = document.getElementById('ranking-container');
+        rankingContainer.innerHTML = '';  // 기존 데이터를 지운 후 새로 갱신
+
+        // 데이터가 있으면 각 랭킹 정보를 표시
+        if (data && data.length > 0) {
+          data.forEach(item => {
+            const rankingElement = document.createElement('div');
+
+            // ranking-content 클래스를 추가하여 스타일 적용
+            rankingElement.classList.add('ranking-content');
+
+            rankingElement.innerHTML = `
+              <p>순위: ${item.ranking}</p>
+              <p>식당 이름: ${item.restaurantName}</p>
+              <p>위치: ${item.location}</p>
+              <p>평점: ${item.rating}</p>
+              <p>리뷰: ${item.review}</p>
+            `;
+
+            rankingContainer.appendChild(rankingElement); // ranking-container에 추가
+          });
+        } else {
+          rankingContainer.innerHTML = '<p>랭킹 데이터가 없습니다.</p>';
+        }
+      })
+      .catch(error => {
+        console.error('랭킹 데이터를 불러오는 데 오류가 발생했습니다:', error);
+      });
   }
 </script>
 

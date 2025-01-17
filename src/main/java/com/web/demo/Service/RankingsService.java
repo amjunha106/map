@@ -14,6 +14,6 @@ public class RankingsService {
 
     // 순위별로 정렬하여 모든 랭킹 데이터를 반환
     public List<Rankings> getAllRankings() {
-        return rankingsRepository.findAllByOrderByRankingDesc(); // 순위 오름차순 정렬
+        return rankingsRepository.findAllByOrderByRankingAsc(); // 순위 오름차순 정렬
     }
 }
