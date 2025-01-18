@@ -2,23 +2,23 @@ package com.web.demo.Entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import java.util.Date;
+import java.sql.Date;
 
 @Entity
 public class Recommends {
     @Id
-    private Long id;
+    private String id;
     private Integer pwd;
     private String restaurant_name;
-    private String loaction;
+    private String location;  // 오타 수정
     private Double rating;
-    private Date today;
+    private Date today;  // java.sql.Date로 변경
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -38,12 +38,12 @@ public class Recommends {
         this.restaurant_name = restaurant_name;
     }
 
-    public String getLoaction() {
-        return loaction;
+    public String getLocation() {  // 오타 수정
+        return location;
     }
 
-    public void setLoaction(String loaction) {
-        this.loaction = loaction;
+    public void setLocation(String location) {  // 오타 수정
+        this.location = location;
     }
 
     public Double getRating() {
