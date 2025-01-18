@@ -1,9 +1,10 @@
 package com.web.demo.Controller;
 
-import com.web.demo.JpaRepository.RankingsRepository;
 import com.web.demo.Entity.Rankings;
+import com.web.demo.Service.RankingsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -12,12 +13,15 @@ import java.util.List;
 public class RankingsController {
 
     @Autowired
-    private RankingsRepository rankingsRepository;  // RankingsRepository 사용
+    private RankingsService rankingsService;  // RankingsService 사용
 
-    // "/rank" URL 요청을 처리하는 메서드 (JSON 반환)
+    // 지역별 랭킹을 반환
     @GetMapping("/rank")
-    public List<Rankings> getRankingData() {
-        // rankings 데이터를 순위 내림차순으로 가져옴
-        return rankingsRepository.findAllByOrderByRankingAsc();
+    public List<Rankings> getRankings(@RequestParam(value = "location", required = false) String location) {
+        if (location != null) {
+            return rankingsService.getLocationRankingAsc(location);  // 지역별 오름차순 랭킹
+        } else {
+            return rankingsService.getRankingAsc();  // 모든 랭킹 조회
+        }
     }
 }
