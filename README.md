@@ -1,69 +1,221 @@
-<h1>Project Planner</h1>
+<h1>돈슐랭가이드</h1>
 <img src="/images/image1.png" alt="Image">
 <br>
 <h1>소개 및 개요</h1>
-프로젝트 기간 : 2024-07-22 ~ 2024-08-26<br>
-인원 : 3인<br>
-주제 : PMS(프로젝트 관리)사이트 만들기<br>
-사용언어 : JAVA, JAVASCRIPT
+프로젝트 기간 : 2025-01-06 ~ 2025-01-20<br>
+인원 : 개인<br>
+주제 : 맛집소개사이트 만들기<br>
+사용언어 : JAVA, JAVASCRIPT 
 <br>
 
 <details>
   <summary>프로젝트 구조</summary>
 
   <pre>
-    C:.
-├─java
-│  └─com
-│      └─web
-│          └─projectplanner
-│              ├─a00_configure
-│              │  └─WebConfig.java (메일언어변경)
-│              ├─a01_controller
-│              │  └─CalendarController.java (캘린더)
-│              │  └─FreeBoardController.java (자유게시판)
-│              │  └─MailController.java (메일전송)
-│              │  └─ReplyController.java (게시판-댓글)
-│              ├─a02_service
-│              │  └─CalendarService.java
-│              │  └─FileUploadService.java (파일업로드)
-│              │  └─FreeBoardService.java
-│              │  └─MailService.java
-│              │  └─ReplyService.java
-│              ├─a03_dao
-│              │  └─CalendarDao.java
-│              │  └─FreeBoardDao.java
-│              │  └─MailDao.java
-│              │  └─ReplyDao.java
-│              ├─a04_vo
-│              │  └─Calendar.java
-│              │  └─FreeBoard.java
-│              │  └─FreeBoardFile.java
-│              │  └─FreeBoardSch.java
-│              │  └─Mail.java
-│              │  └─Reply.java
-│              ├─a05_util
-│              └─aspect
-├─resource
-├─resources
-│  ├─messages
-│  │    └─messages_en.properties
-│  │    └─messages_ko.properties
-│  │    └─messages.properties
-│  └─static
-│      └─z06_emailList.html (사원메일조회)
-└─webapp
-    ├─a00_com
-    ├─img
-    ├─WEB-INF
-    │  └─views
-    │      └─z01_FreeBoardList.jsp
-    │      └─z02_FreeBoaredInsert.jsp
-    │      └─z03_FreeBoardDetail.jsp
-    │      └─z04_MailFrm.jsp
-    │      └─z05_Calender.jsp
-    ├─z01_upload
-    └─z05_bootTmp
+C:.
+│  .gitignore
+│  build.gradle
+│  gradlew
+│  gradlew.bat
+│  README.md
+│  settings.gradle
+│
+├─.gradle
+│  │  file-system.probe
+│  │
+│  ├─8.10
+│  │  │  gc.properties
+│  │  │
+│  │  ├─checksums
+│  │  │      checksums.lock
+│  │  │      md5-checksums.bin
+│  │  │      sha1-checksums.bin
+│  │  │
+│  │  ├─dependencies-accessors
+│  │  │      gc.properties
+│  │  │
+│  │  ├─executionHistory
+│  │  │      executionHistory.bin
+│  │  │      executionHistory.lock
+│  │  │
+│  │  ├─expanded
+│  │  ├─fileChanges
+│  │  │      last-build.bin
+│  │  │
+│  │  ├─fileHashes
+│  │  │      fileHashes.bin
+│  │  │      fileHashes.lock
+│  │  │      resourceHashesCache.bin
+│  │  │
+│  │  └─vcsMetadata
+│  ├─buildOutputCleanup
+│  │      buildOutputCleanup.lock
+│  │      cache.properties
+│  │      outputFiles.bin
+│  │
+│  └─vcs-1
+│          gc.properties
+│
+├─.idea
+│      .gitignore
+│      compiler.xml
+│      dbnavigator.xml
+│      gradle.xml
+│      misc.xml
+│      vcs.xml
+│      workspace.xml
+│
+├─build
+│  │  bootRunMainClassName
+│  │
+│  ├─classes
+│  │  └─java
+│  │      └─main
+│  │          └─com
+│  │              └─web
+│  │                  └─demo
+│  │                          HomeController.class
+│  │                          Map1Application.class
+│  │
+│  ├─generated
+│  │  └─sources
+│  │      ├─annotationProcessor
+│  │      │  └─java
+│  │      │      └─main
+│  │      └─headers
+│  │          └─java
+│  │              └─main
+│  ├─resources
+│  │  └─main
+│  │      │  application.properties
+│  │      │
+│  │      ├─static
+│  │      │  │  test.html
+│  │      │  │
+│  │      │  └─images
+│  │      │          image1.png
+│  │      │
+│  │      └─templates
+│  │              Home.html
+│  │
+│  └─tmp
+│      └─compileJava
+│          │  previous-compilation-data.bin
+│          │
+│          └─compileTransaction
+│              ├─backup-dir
+│              └─stash-dir
+│                      HomeController.class.uniqueId0
+│
+├─gradle
+│  └─wrapper
+│          gradle-wrapper.jar
+│          gradle-wrapper.properties
+│
+├─out
+│  └─production
+│      ├─classes
+│      │  └─com
+│      │      └─web
+│      │          └─demo
+│      │              │  Map1Application.class
+│      │              │
+│      │              ├─Controller
+│      │              │      HomeController.class
+│      │              │      RankingsController.class
+│      │              │      RecommendsController.class
+│      │              │
+│      │              ├─Entity
+│      │              │      Rankings.class
+│      │              │      Recommends.class
+│      │              │
+│      │              ├─JpaRepository
+│      │              │      RankingsRepository.class
+│      │              │      RecommendsRepository.class
+│      │              │
+│      │              └─Service
+│      │                      RankingsService.class
+│      │                      RecommendsService.class
+│      │
+│      └─resources
+│          │  application.properties
+│          │
+│          ├─static
+│          │  │  test.html
+│          │  │
+│          │  ├─css
+│          │  │      style.css
+│          │  │
+│          │  └─images
+│          │          image1.png
+│          │          image10.jpg
+│          │          image11.jpg
+│          │          image2.jpg
+│          │          image3.jpg
+│          │          image4.jpg
+│          │          image5.jpg
+│          │          image6.jpg
+│          │          image7.jpg
+│          │          image8.jpg
+│          │          image9.jpg
+│          │
+│          └─templates
+│                  Home.html
+│
+└─src
+    ├─main
+    │  ├─java
+    │  │  └─com
+    │  │      └─web
+    │  │          └─demo
+    │  │              │  Map1Application.java
+    │  │              │
+    │  │              ├─Controller
+    │  │              │      HomeController.java
+    │  │              │      RankingsController.java
+    │  │              │      RecommendsController.java
+    │  │              │
+    │  │              ├─Entity
+    │  │              │      Rankings.java
+    │  │              │      Recommends.java
+    │  │              │
+    │  │              ├─JpaRepository
+    │  │              │      RankingsRepository.java
+    │  │              │      RecommendsRepository.java
+    │  │              │
+    │  │              └─Service
+    │  │                      RankingsService.java
+    │  │                      RecommendsService.java
+    │  │
+    │  └─resources
+    │      │  application.properties
+    │      │
+    │      ├─static
+    │      │  │  test.html
+    │      │  │
+    │      │  ├─css
+    │      │  │      style.css
+    │      │  │
+    │      │  └─images
+    │      │          image1.png
+    │      │          image10.jpg
+    │      │          image11.jpg
+    │      │          image2.jpg
+    │      │          image3.jpg
+    │      │          image4.jpg
+    │      │          image5.jpg
+    │      │          image6.jpg
+    │      │          image7.jpg
+    │      │          image8.jpg
+    │      │          image9.jpg
+    │      │
+    │      └─templates
+    │          │  Home.html
+    │          │
+    │          └─@{
+    └─test
+        ├─java
+        └─resources
   </pre>
 </details>
 
