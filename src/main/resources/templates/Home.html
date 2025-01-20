@@ -300,42 +300,47 @@
         });
     }
 
-    // 추천 콘텐츠 등록하기
     document.getElementById('recommend-form-element').addEventListener('submit', function(event) {
-        event.preventDefault();  // 폼 제출 시 페이지 리로드 방지
+    event.preventDefault();  // 폼 제출 시 페이지 리로드 방지
 
-        // 입력된 값 가져오기
-        const id = document.getElementById('id').value;
-        const restaurant_name = document.getElementById('restaurant_name').value;
-        const location = document.getElementById('location').value;
-        const rating = document.getElementById('rating').value;
+    // 입력된 값 가져오기
+    const id = document.getElementById('id').value;
+    const restaurant_name = document.getElementById('restaurant_name').value;
+    const location = document.getElementById('location').value;
+    const rating = document.getElementById('rating').value;
 
-        // 데이터 객체 생성
-        const newRecommend = {
-            id: id,
-            restaurant_name: restaurant_name,
-            location: location,
-            rating: rating,
-            today: new Date().toISOString().split('T')[0]  // 현재 날짜 (yyyy-mm-dd 형식)
-        };
+    // 데이터 객체 생성
+    const newRecommend = {
+        id: id,
+        restaurant_name: restaurant_name,
+        location: location,
+        rating: rating,
+        today: new Date().toISOString().split('T')[0]  // 현재 날짜 (yyyy-mm-dd 형식)
+    };
 
-        // 서버로 데이터 전송
-        fetch('/recommends', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(newRecommend)
-        })
-        .then(response => response.json())
-        .then(data => {
-            alert('추천 콘텐츠가 등록되었습니다!');
-            fetchRecommends();  // 등록 후 추천 콘텐츠 다시 로드
-        })
-        .catch(error => {
-            console.error('추천 콘텐츠 등록에 실패했습니다:', error);
-        });
-    });
+    // 서버로 데이터 전송
+    fetch('/recommends', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(newRecommend)
+})
+.then(response => {
+    if (!response.ok) {
+        throw new Error(`서버 오류: ${response.status} ${response.statusText}`);
+    }
+    return response.json();  // 응답을 JSON 형식으로 변환
+})
+.then(data => {
+    alert('추천 콘텐츠가 등록되었습니다!');
+    fetchRecommends();  // 등록 후 추천 콘텐츠 다시 로드
+})
+.catch(error => {
+    alert('추천 등록에 실패했습니다. 서버에서 오류가 발생했습니다.');
+});
+
+});
 </script>
 
 
