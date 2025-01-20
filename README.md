@@ -220,14 +220,13 @@ C:.
 </details>
 
 <br>
-<h1>팀원소개 및 역할분담</h1>
-<img src="/images/image2.png" alt="Image">
+
 <br/>
 <h1>프로젝트 기술스택</h1>
 <h2>프론트엔드 (Front-end)</h2>
 <ul>
-  <li>Jsp : Spring Mvc패턴의 view단으로 사용하기위해 템플릿 역할로 사용하였습니다.</li>
-  <li>Javascript(vue.js, ajax) : 사원메일조회, 게시판(게시글, 댓글)/캘린더CRUD의 비동기처리를 하기위해 사용하였습니다.</li>
+  <li>Thymeleaf : Spring Mvc패턴의 view단으로 사용하기위해 템플릿 역할로 사용하며 html코드를 동적으로 렌더링하기위해 사용하였습니다.</li>
+  <li>Javascript : 메인페이지의 이미지 슬라이드/매장순위(지역별)/추천매장(조회/등록)을 위해 사용하였습니다.</li>
   <li>CSS : 웹 페이지의 스타일과 레이아웃을 정하기 위해 사용하였습니다.</li>
 </ul>
 
@@ -236,18 +235,18 @@ C:.
   <li>java(SpringBoot사용) : Restful Api를 구축하기 위해 사용하였습니다.</li>
 </ul>
 
-<h2>데이터베이스 (Database)</h2>
+<h2>데이터베이스 (Mysql)</h2>
 <ul>
-  <li>Oracle : 사원정보/일정/게시판의 데이터를 저장하고 조회하기위해 사용하였습니다.</li>
+  <li>Mysql : 매장순위와 추천매장의 데이터를 저장하고 조회하기위해 사용하였습니다.</li>
 </ul>
 <br/>
 <h1>프로젝트 관리도구</h1>
 <h2>파일 관리 (File Management)</h2>
 <ul>
-  <li>Svn : 코드를 새로 작성하거나 업데이트시 바로 공유하기위해 사용하였습니다.</li>
+  <li>GitHub : 코드를 새로 작성하거나 업데이트하거나 코드가 꼬여서 백업이 필요할 때 사용하였습니다.</li>
 </ul>
 <br/>
-<h1>1. Calendar</h1>
+<h1>1. 메인페이지</h1>
 <h3>개인/팀/간트차트 별 일정조회, 체크박스 여부에 따라 여러일정을 한번에 조회</h3>
 <img src="/gifs/gif1.gif" width="950px" alt="Image">
 <img src="/images/캘린더 조회.png" width="950px" alt="Image">
