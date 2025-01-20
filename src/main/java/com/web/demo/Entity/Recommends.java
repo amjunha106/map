@@ -6,28 +6,21 @@ import java.sql.Date;
 
 @Entity
 public class Recommends {
-    @Id
-    private String id;
-    private Integer pwd;
-    private String restaurant_name;
-    private String location;  // 오타 수정
-    private Double rating;
-    private Date today;  // java.sql.Date로 변경
 
+    @Id
+    private String id;  // 추천 아이디
+    private String restaurant_name;  // 식당 이름
+    private String location;  // 위치
+    private Double rating;  // 평점
+    private Date today;  // 등록일
+
+    // Getters and Setters
     public String getId() {
         return id;
     }
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public Integer getPwd() {
-        return pwd;
-    }
-
-    public void setPwd(Integer pwd) {
-        this.pwd = pwd;
     }
 
     public String getRestaurant_name() {
@@ -38,11 +31,11 @@ public class Recommends {
         this.restaurant_name = restaurant_name;
     }
 
-    public String getLocation() {  // 오타 수정
+    public String getLocation() {
         return location;
     }
 
-    public void setLocation(String location) {  // 오타 수정
+    public void setLocation(String location) {
         this.location = location;
     }
 
