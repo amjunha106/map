@@ -247,49 +247,24 @@ C:.
 </ul>
 <br/>
 <h1>1. 메인페이지</h1>
-<h3>개인/팀/간트차트 별 일정조회, 체크박스 여부에 따라 여러일정을 한번에 조회</h3>
-<img src="/gifs/gif1.gif" width="950px" alt="Image">
-<img src="/images/캘린더 조회.png" width="950px" alt="Image">
-<h3>일정등록</h3>
-<img src="/gifs/gif2.gif" width="950px" alt="Image">
-<img src="/images/일정등록.png" width="950px" alt="Image">
-<h3>일정수정/삭제</h3>
-<img src="/gifs/gif3.gif" width="950px" alt="Image">
-<img src="/images/일정수정.png" width="950px" alt="Image">
-<img src="/images/일정삭제.png" width="950px" alt="Image">
+<h3>이미지 슬라이드를 메인으로 타이틀과 사이드바</h3>
+<img src="/images/image2.gif" width="950px" alt="Image">
+<img src="/images/image2-1.png" width="950px" alt="Image">
 
-<h1>2. 자유게시판</h1>
-<h3>전체게시글 조회, 게시글10개마다 페이징처리</h3>
-<img src="/gifs/gif4.gif" width="950px" alt="Image">
-<img src="/images/자유게시판조회.png" width="950px" alt="Image">
-<img src="/images/페이징처리.png" width="950px" alt="Image">
+<h1>2. 사이드바 메뉴</h1>
+<h3>매장순위 조회</h3>
+<img src="/images/image3.gif" width="950px" alt="Image">
+<img src="/images/image3-1" width="950px" alt="Image">
 
-<h3>제목or작성자로 게시글검색</h3>
-<img src="/gifs/gif9.gif" width="950px" alt="Image">
+<h3>전체 랭킹의 데이터를 지역별로 조회</h3>
+<img src="/images/image4.gif" width="950px" alt="Image">
+<img src="/images/image4-1.png" width="950px" alt="Image">
+<img src="/images/image4-2.png" width="950px" alt="Image">
 
-<h1>2-1) 자유게시판 - 게시글 등록</h1>
-<h3>제목과 내용을 입력 후 게시글등록, 파일업로드 가능</h3>
-<img src="/gifs/gif5.gif" width="950px" alt="Image">
-<img src="/images/자유게시판글등록.png" width="950px" alt="Image">
+<h3>돈슐랭가이드 제작자의 돈까스철학을 파악할 수 있는 페이지</h3>
+<img src="/images/image5.png" width="950px" alt="Image">
 
-<h1>2-2) 자유게시판 - 게시글상세</h1>
-<h3>게시글상세 확인가능, 업로드된 첨부파일 다운로드</h3>
-<img src="/gifs/gif6.gif" width="950px" alt="Image">
-<img src="/images/자유게시판상세.png" width="950px" alt="Image">
-<h3>게시글 수정/삭제</h3>
-<img src="/gifs/gif7.gif" width="950px" alt="Image">
-<img src="/images/자유게시판수정삭제.png" width="950px" alt="Image">
-
-<h1>2-3) 자유게시판 - 댓글등록/삭제</h1>
-<h3>해당 게시글에 댓글등록/삭제 가능</h3>
-<img src="/gifs/gif8.gif" width="950px" alt="Image">
-<img src="/images/댓글등록.png" width="950px" alt="Image">
-<img src="/images/댓글삭제.png" width="950px" alt="Image">
-
-<h1> 3. 메일전송(언어변경)</h1>
-<h3>상대방에게 메일전송</h3>
-<img src="/gifs/gif10.gif" width="950px" alt="Image">
-<h3>사원정보 조회(vue.js)</h3>
-<img src="/gifs/gif11.gif" width="950px" alt="Image">
-<h3>언어변경</h3>
-<img src="/gifs/gif12.gif" width="950px" alt="Image">
+<h3>추천매장 등록</h3>
+<img src="/images/image6.gif" width="950px" alt="Image">
+<img src="/images/image6-1.png" width="950px" alt="Image">
+<img src="/images/image6-2.png" width="950px" alt="Image">
