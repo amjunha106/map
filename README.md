@@ -254,7 +254,7 @@ C:.
 <h1>2. 사이드바 메뉴</h1>
 <h3>매장순위 조회</h3>
 <img src="/images/image3.gif" width="950px" alt="Image">
-<img src="/images/image3-1" width="950px" alt="Image">
+<img src="/images/image3-1.png" width="950px" alt="Image">
 
 <h3>전체 랭킹의 데이터를 지역별로 조회</h3>
 <img src="/images/image4.gif" width="950px" alt="Image">
